@@ -74,7 +74,9 @@
             </li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
             <li>
-              <a class="getstarted scrollto" href="#about">Get Started</a>
+              <a class="getstarted scrollto" href="{% url 'courses:list' %}"
+                >Get Started</a
+              >
             </li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -96,7 +98,11 @@
               We are team of talented designers making websites with Bootstrap
             </h2>
             <div>
-              <a href="#about" class="btn-get-started scrollto">Get Started</a>
+              <a
+                href="{% url 'courses:list' %}"
+                class="btn-get-started scrollto"
+                >Get Started</a
+              >
             </div>
           </div>
           <div
