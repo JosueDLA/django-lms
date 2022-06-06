@@ -8,6 +8,8 @@ import os
 from django.conf import settings
 
 # Create your models here.
+
+
 class Assignment(models.Model):
     assignment_name = models.CharField(max_length=200, blank=False)
     assignment_description = models.TextField(blank=False)
@@ -21,13 +23,16 @@ class Assignment(models.Model):
     def get_absolute_url(self):
         return reverse('assignments:detail', kwargs={'pk': self.pk})
 
+
 class SubmitAssignment(models.Model):
-    author = models.ForeignKey(User, related_name='assignment', on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        User, related_name='assignment', on_delete=models.CASCADE)
     topic = models.CharField(max_length=200, blank=False)
     description = models.TextField(blank=False)
     assignment_file = models.FileField(blank=False, upload_to='assignments')
     submitted_date = models.DateTimeField(default=timezone.now)
-    assignment_ques = models.ForeignKey(Assignment, related_name="question", on_delete=models.CASCADE, null=True)
+    assignment_ques = models.ForeignKey(
+        Assignment, related_name="question", on_delete=models.CASCADE, null=True)
     graded = models.BooleanField(default=False)
     grade = models.IntegerField(
         default=0,
@@ -48,6 +53,6 @@ class SubmitAssignment(models.Model):
     def delete(self, *args, **kwargs):
         os.remove(os.path.join(settings.MEDIA_ROOT, self.assignment_file.name))
         super().delete(*args, **kwargs)
-    
+
     def get_absolute_url(self):
         return reverse('assignments:submit_detail', kwargs={'pk': self.pk})
