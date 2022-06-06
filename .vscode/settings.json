@@ -1,6 +1,16 @@
 {
     "python.pythonPath": "C:\\Users\\goyal\\Anaconda3\\python.exe",
     "files.associations": {
-        "*.html": "django-html"
+        "*.html": "django-html",
+        "**/templates/**/*.html": "django-html",
+        "**/templates/**/*": "django-txt",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
     },
+    "beautify.language": {
+        "html": [
+            "htm",
+            "html",
+            "django-html"
+        ]
+    }
 }
